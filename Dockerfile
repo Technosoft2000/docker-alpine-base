@@ -29,7 +29,7 @@ ENV \
 
     # - PKG_*: the needed applications for installation
     GOSU_VERSION="1.10" \
-    PKG_BASE="bash tzdata git coreutils"    
+    PKG_BASE="bash tzdata git coreutils shadow"    
 	
 RUN \
     # update the package list
