@@ -15,7 +15,11 @@ else
   echo "[INFO] Create group $PGROUP with id $PGID"
   # create group similar to:
   #  addgroup --gid $PGID $PGROUP
-  addgroup -g $PGID $PGROUP
+  # 
+  # changed from:
+  #  addgroup -g $PGID $PGROUP
+  # to:
+  groupmod -o -g "$PGID" "$PGROUP"
 fi
 
 UN=`grep "^.*:$PUID" /etc/passwd | awk -F':' '{print \$1}'`
@@ -25,7 +29,11 @@ else
   echo "[INFO] Create user $PUSER with id $PUID"
   #create user similar to:
   #  adduser --shell /bin/bash --no-create-home --uid $PUID --ingroup $PGROUP --disabled-password --gecos "" $PUSER
-  adduser -s /bin/bash -H -u $PUID -G $PGROUP -D -g "" $PUSER
+  #
+  # changed from:
+  #  adduser -s /bin/bash -H -u $PUID -G $PGROUP -D -g "" $PUSER
+  # to:
+  usermod -o -u "$PUID" -g "$PGROUP" "$PUSER"
 fi
 
 # set the timezone

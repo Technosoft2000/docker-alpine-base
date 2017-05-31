@@ -14,6 +14,12 @@ on the original [Alpine Image](https://hub.docker.com/_/alpine/) but with the fo
 
 ## Updates ##
 
+**2017-05-31 - 3.6-2**
+
+ * changed for group creation from `addgroup` to `groupmod`
+ * changed for user creation from `adduser` to `usermod`
+ * updated installation part of `gosu` according to https://github.com/tianon/gosu/blob/master/INSTALL.md
+
 **2017-05-25 - 3.6-1**
 
  * updated image to Alpine 3.6
