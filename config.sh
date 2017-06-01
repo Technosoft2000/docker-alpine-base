@@ -8,7 +8,7 @@ PGROUP=${PGROUP:=app}
 
 # create internal APP group and user
 # (which will be mapped to external group and user, and used to run the process)
-GN=`getent group $PUID | awk -F':' '{print \$1}'`
+GN=`getent group $PGID | awk -F':' '{print \$1}'`
 if [ $GN ]; then
   echo "[WARNING] A group with id $PGID exists already [in use by $GN] and will be modified."
   groupmod -o -g "$PGID" "$PGROUP"
