@@ -9,6 +9,10 @@ fi
 cat /init/info.txt
 echo "[INFO] Docker image version: $VERSION"
 
+# show Alpine Linux version info
+ALPINE_VERSION=`cat /etc/alpine-release`
+echo "[INFO] Alpine Linux version: $ALPINE_VERSION"
+
 # run the default config script
 source /init/config.sh
 

@@ -11,7 +11,9 @@ PGROUP=${PGROUP:=app}
 GN=`getent group $PGID | awk -F':' '{print \$1}'`
 if [ $GN ]; then
   echo "[WARNING] A group with id $PGID exists already [in use by $GN] and will be modified."
-  groupmod -o -g "$PGID" "$PGROUP"
+  # rename the existing group to the specified app group name
+  echo "[WARNING] The group $GN will be renamed to $PGROUP"
+  groupmod -o -n "$PGROUP" "$GN"
 else
   echo "[INFO] Create group $PGROUP with id $PGID"
   # create group similar to:
@@ -22,7 +24,9 @@ fi
 UN=`grep "^.*:$PUID" /etc/passwd | awk -F':' '{print \$1}'`
 if [ $UN ]; then
   echo "[WARNING] A user with id $PUID exists already [in use by $UN] and will be modified."
-  usermod -o -u "$PUID" -g "$PGROUP" "$PUSER"
+  # rename the existing user to the specified app user name
+  echo "[WARNING] The user $UN will renamed to $PUSER and assigned to group $PGROUP"
+  usermod -o -l "$PUSER" -g "$PGROUP" "$UN"
 else
   echo "[INFO] Create user $PUSER with id $PUID"
   #create user similar to:
