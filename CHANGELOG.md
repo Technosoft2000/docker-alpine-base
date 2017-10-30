@@ -1,3 +1,32 @@
+**2017-10-30 - 3.6-3**
+
+ * fixed user detection for a specific user id - e.g. *0* for *root*
+
+   the command ```grep "^.*:0" /etc/passwd``` delivers more than one entry
+
+   ```
+   root:x:0:0:root:/root:/bin/ash
+   sync:x:5:0:sync:/sbin:/bin/sync
+   shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+   halt:x:7:0:halt:/sbin:/sbin/halt
+   operator:x:11:0:operator:/root:/bin/sh
+   ```
+
+   and due this I changed it to the command ```getent passwd 0``` which delivers only the corresponding one
+
+   ```
+   root:x:0:0:root:/root:/bin/ash
+   ```
+
+ * changed the cleanup of the temporary directory from ```rm -rf /tmp``` to ```rm -rf /tmp/*```
+
+ * added the package `tree` into the base image to have the possibility 
+   to easily check which timezone values are possible via the command
+
+   ```docker exec -it <CONTAINER> tree /usr/share/zoneinfo```
+
+   and added a file with the [possible timezone values](TIMEZONES.md).
+
 **2017-06-03 - 3.6-2**
 
  * new version allows now usage of group id's __PGID__ < 1000 

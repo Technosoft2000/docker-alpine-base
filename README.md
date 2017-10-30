@@ -14,12 +14,34 @@ on the original [Alpine Image](https://hub.docker.com/_/alpine/) but with the fo
 
 ## Updates ##
 
-**2017-06-03 - 3.6-2**
+**2017-10-30 - 3.6-3**
 
- * new version allows now usage of group id's __PGID__ < 1000 
- * enhanced group creation via usage of `addgroup` and `groupmod`
- * enhanced user creation via usage of `adduser` and `usermod`
- * updated installation part of `gosu` according to https://github.com/tianon/gosu/blob/master/INSTALL.md
+ * fixed user detection for a specific user id - e.g. *0* for *root*
+
+   the command ```grep "^.*:0" /etc/passwd``` delivers more than one entry
+
+   ```
+   root:x:0:0:root:/root:/bin/ash
+   sync:x:5:0:sync:/sbin:/bin/sync
+   shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+   halt:x:7:0:halt:/sbin:/sbin/halt
+   operator:x:11:0:operator:/root:/bin/sh
+   ```
+
+   and due this I changed it to the command ```getent passwd 0``` which delivers only the corresponding one
+
+   ```
+   root:x:0:0:root:/root:/bin/ash
+   ```
+
+ * changed the cleanup of the temporary directory from ```rm -rf /tmp``` to ```rm -rf /tmp/*```
+
+ * added the package `tree` into the base image to have the possibility 
+   to easily check which timezone values are possible via the command
+
+   ```docker exec -it <CONTAINER> tree /usr/share/zoneinfo```
+
+   and added a file with the [possible timezone values](TIMEZONES.md).
 
 For previous changes see at [full changelog](CHANGELOG.md).
 
@@ -106,6 +128,10 @@ Examples:
  * ```America/New_York```
  * ...
 
+Once the container is running you can get all possible timezones as tree via the command ```docker exec -it <CONTAINER> tree /usr/share/zoneinfo```
+
+See also at [possible timezone values](TIMEZONES.md).
+
 __Don't use the value__ `localtime` because it results into: `failed to access '/etc/localtime': Too many levels of symbolic links`
 
 ## User / Group Identifiers ##
@@ -119,10 +145,12 @@ In this instance PUID=1001 and PGID=1001. To find yours use id user as below:
 ```
 
 ## Additional ##
-Shell access whilst the container is running: `docker exec -it <DOCKER-IMAGE> /bin/bash`
+Shell access whilst the container is running: `docker exec -it <CONTAINER> /bin/bash`
 
-Upgrade to the latest version of Calibre Web: `docker restart <DOCKER-IMAGE>`
+Upgrade to the latest version of the application which runs in the container: `docker restart <CONTAINER>`
 
-To monitor the logs of the container in realtime: `docker logs -f <DOCKER-IMAGE>`
+To monitor the logs of the container in realtime: `docker logs -f <CONTAINER>`
+
+Show used base image version number of the container: `docker inspect -f '{{ index .Config.Labels "image.base.version" }}' <CONTAINER>`
 
 [lifecycle]: https://rawgit.com/Technosoft2000/docker-alpine-base/master/docs/docker-alpine-base-lifecycle.svg "Technosoft2000 Alpine Base image lifecycle"

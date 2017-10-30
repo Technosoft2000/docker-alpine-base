@@ -1,8 +1,8 @@
 FROM alpine:3.6
 MAINTAINER Technosoft2000 <technosoft2000@gmx.net>
-LABEL image.base.version="3.6-2" \
+LABEL image.base.version="3.6-3" \
       image.base.description="Docker image for Alpine based docker images by Technosoft2000" \
-      image.base.date="2017-05-31" \
+      image.base.date="2017-10-30" \
       url.base.docker="https://hub.docker.com/r/technosoft2000/alpine-base" \
       url.base.github="https://github.com/Technosoft2000/docker-alpine-base" \
       url.base.support="https://cytec.us/forum"
@@ -29,7 +29,7 @@ ENV \
 
     # - PKG_*: the needed applications for installation
     GOSU_VERSION="1.10" \
-    PKG_BASE="bash tzdata git coreutils shadow"    
+    PKG_BASE="bash tzdata git coreutils shadow tree"    
 	
 RUN \
     # update the package list
@@ -69,7 +69,7 @@ RUN \
     mkdir -p /init && \
 
     # cleanup temporary files
-    rm -rf /tmp && \
+    rm -rf /tmp/* && \
     rm -rf /var/cache/apk/*
 
 # copy files to the image (info.txt and scripts)

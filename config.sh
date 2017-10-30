@@ -21,7 +21,7 @@ else
   addgroup -g $PGID $PGROUP
 fi
 
-UN=`grep "^.*:$PUID" /etc/passwd | awk -F':' '{print \$1}'`
+UN=`getent passwd $PUID | awk -F':' '{print \$1}'`
 if [ $UN ]; then
   echo "[WARNING] A user with id $PUID exists already [in use by $UN] and will be modified."
   # rename the existing user to the specified app user name
