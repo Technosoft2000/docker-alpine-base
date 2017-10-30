@@ -43,6 +43,8 @@ on the original [Alpine Image](https://hub.docker.com/_/alpine/) but with the fo
 
    and added a file with the [possible timezone values](TIMEZONES.md).
 
+ * updated the way of user creation & user id assignment if id is already in usage e.g. id=0 by root
+
 For previous changes see at [full changelog](CHANGELOG.md).
 
 ## Features ##

@@ -27,6 +27,8 @@
 
    and added a file with the [possible timezone values](TIMEZONES.md).
 
+ * updated the way of user creation & user id assignment if id is already in usage e.g. id=0 by root
+
 **2017-06-03 - 3.6-2**
 
  * new version allows now usage of group id's __PGID__ < 1000 

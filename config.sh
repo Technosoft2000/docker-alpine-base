@@ -23,10 +23,14 @@ fi
 
 UN=`getent passwd $PUID | awk -F':' '{print \$1}'`
 if [ $UN ]; then
-  echo "[WARNING] A user with id $PUID exists already [in use by $UN] and will be modified."
-  # rename the existing user to the specified app user name
-  echo "[WARNING] The user $UN will renamed to $PUSER and assigned to group $PGROUP"
-  usermod -l $PUSER -g $PGROUP $UN
+  echo "[WARNING] A user with id $PUID exists already [in use by $UN]."
+  # create the specified app user name with the same user id (non-unique)
+  TEMPORARY_PUID=999
+  echo "[WARNING] Create user $PUSER with temporary user id $TEMPORARY_PUID."
+  adduser -s /bin/bash -H -u $TEMPORARY_PUID -G $PGROUP -D -g "" $PUSER
+  #-o, --non-unique ... when used with the -u option, this option allows to change the user ID to a non-unique value.
+  echo "[WARNING] Assign non-unique user id $PUID to created user $PUSER"
+  usermod -o -u $PUID $PUSER
 else
   echo "[INFO] Create user $PUSER with id $PUID"
   #create user similar to:
