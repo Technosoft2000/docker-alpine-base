@@ -1,8 +1,8 @@
-FROM alpine:3.6
+FROM alpine:3.8
 MAINTAINER Technosoft2000 <technosoft2000@gmx.net>
-LABEL image.base.version="3.6-3" \
+LABEL image.base.version="3.8-1" \
       image.base.description="Docker image for Alpine based docker images by Technosoft2000" \
-      image.base.date="2017-10-30" \
+      image.base.date="2018-08-15" \
       url.base.docker="https://hub.docker.com/r/technosoft2000/alpine-base" \
       url.base.github="https://github.com/Technosoft2000/docker-alpine-base" \
       url.base.support="https://cytec.us/forum"

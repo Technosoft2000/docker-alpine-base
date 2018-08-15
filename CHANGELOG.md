@@ -1,3 +1,7 @@
+**2018-08-15 - 3.8-1**
+
+ * updated to Alpine 3.8.0
+
 **2017-10-30 - 3.6-3**
 
  * fixed user detection for a specific user id - e.g. *0* for *root*
