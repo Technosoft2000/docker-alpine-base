@@ -1,3 +1,7 @@
+**2019-02-17 - 3.9-1**
+
+ * updated to Alpine 3.9.0
+
 **2018-08-15 - 3.8-1**
 
  * updated to Alpine 3.8.0
