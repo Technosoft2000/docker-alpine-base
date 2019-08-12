@@ -14,9 +14,9 @@ on the original [Alpine Image](https://hub.docker.com/_/alpine/) but with the fo
 
 ## Updates ##
 
-**2019-02-17 - 3.9-1**
+**2019-02-17 - 3.10-1**
 
- * updated to Alpine 3.9.0
+ * updated to Alpine 3.10.0
 
 For previous changes see at [full changelog](CHANGELOG.md).
 
