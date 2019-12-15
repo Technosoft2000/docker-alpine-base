@@ -1,11 +1,11 @@
 FROM alpine:3.10
 MAINTAINER Technosoft2000 <technosoft2000@gmx.net>
-LABEL image.base.version="3.10-1" \
+LABEL image.base.version="3.10-2" \
       image.base.description="Docker image for Alpine based docker images by Technosoft2000" \
-      image.base.date="2019-08-12" \
+      image.base.date="2019-12-15" \
       url.base.docker="https://hub.docker.com/r/technosoft2000/alpine-base" \
       url.base.github="https://github.com/Technosoft2000/docker-alpine-base" \
-      url.base.support="https://cytec.us/forum"
+      url.base.support="https://github.com/Technosoft2000/docker-alpine-base"
 
 # Set basic environment settings
 ENV \
@@ -28,7 +28,7 @@ ENV \
     CONTAINER_TIMEZONE="UTC" \
 
     # - PKG_*: the needed applications for installation
-    GOSU_VERSION="1.10" \
+    GOSU_VERSION="1.11" \
     PKG_BASE="bash tzdata git coreutils shadow tree"    
 	
 RUN \
