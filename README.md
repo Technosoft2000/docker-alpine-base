@@ -14,14 +14,10 @@ on the original [Alpine Image](https://hub.docker.com/_/alpine/) but with the fo
 
 ## Updates ##
 
-**2019-12-15 - 3.10-2**
+**2019-12-15 - 3.11-1**
 
- * updated to Alpine 3.10.3
- * updated gosu to version 1.11
-
-**2019-02-17 - 3.10-1**
-
- * updated to Alpine 3.10.0
+ * updated to Alpine 3.11.2
+ * fixed empty continuation line
 
 For previous changes see at [full changelog](CHANGELOG.md).
 

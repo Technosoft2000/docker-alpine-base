@@ -1,8 +1,8 @@
-FROM alpine:3.10
+FROM alpine:3.11.2
 MAINTAINER Technosoft2000 <technosoft2000@gmx.net>
-LABEL image.base.version="3.10-2" \
+LABEL image.base.version="3.11-1" \
       image.base.description="Docker image for Alpine based docker images by Technosoft2000" \
-      image.base.date="2019-12-15" \
+      image.base.date="2020-01-01" \
       url.base.docker="https://hub.docker.com/r/technosoft2000/alpine-base" \
       url.base.github="https://github.com/Technosoft2000/docker-alpine-base" \
       url.base.support="https://github.com/Technosoft2000/docker-alpine-base"
@@ -11,22 +11,22 @@ LABEL image.base.version="3.10-2" \
 ENV \
     # - VERSION: the docker image version (corresponds to the above LABEL image.version)
     VERSION="1.0.0" \
-    
+    \
     # - TERM: the name of a terminal information file from /lib/terminfo, 
     # this file instructs terminal programs how to achieve things such as displaying color.
     TERM="xterm" \
-
+    \
     # - LANG, LANGUAGE, LC_ALL: language dependent settings (Default: de_DE.UTF-8)
     LANG="de_DE.UTF-8" \
     LANGUAGE="de_DE:de" \
     LC_ALL="de_DE.UTF-8" \
-
+    \
     # - SET_CONTAINER_TIMEZONE: set this environment variable to true to set timezone on container startup
     SET_CONTAINER_TIMEZONE="false" \
-
+    \
     # - CONTAINER_TIMEZONE: UTC, Default container timezone as found under the directory /usr/share/zoneinfo/
     CONTAINER_TIMEZONE="UTC" \
-
+    \
     # - PKG_*: the needed applications for installation
     GOSU_VERSION="1.11" \
     PKG_BASE="bash tzdata git coreutils shadow tree"    
@@ -34,7 +34,7 @@ ENV \
 RUN \
     # update the package list
     apk -U upgrade && \
-
+    \
     # install gosu from https://github.com/tianon/gosu
     # https://github.com/tianon/gosu/blob/master/INSTALL.md
     set -ex; \
@@ -61,13 +61,13 @@ RUN \
 	gosu nobody true; \
 	\
 	apk del .gosu-deps; \
-
+    \
     # install the needed applications
     apk -U add --no-cache $PKG_BASE && \
-
+    \
     # create init folder
     mkdir -p /init && \
-
+    \
     # cleanup temporary files
     rm -rf /tmp/* && \
     rm -rf /var/cache/apk/*
