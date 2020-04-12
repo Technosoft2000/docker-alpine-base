@@ -1,3 +1,8 @@
+**2020-04-12 - 3.11-2**
+
+ * updated to Alpine 3.11.5
+ * small refactoring of the Dockerfile, because MAINTAINER is deprecated in favour of LABEL, and therefore LABEL contains now the MAINTAINER information
+
 **2019-12-15 - 3.11-1**
 
  * updated to Alpine 3.11.2
