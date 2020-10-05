@@ -1,3 +1,8 @@
+**2020-10-05 - 3.12-1**
+
+ * updated to Alpine 3.12.0
+ * updated [gosu](https://github.com/tianon/gosu) to 1.12
+
 **2020-04-12 - 3.11-2**
 
  * updated to Alpine 3.11.5

@@ -1,9 +1,9 @@
-FROM alpine:3.11.5
+FROM alpine:3.12.0
 
 LABEL maintainer="Technosoft2000 <technosoft2000@gmx.net>" \
-      image.base.version="3.11-2" \
+      image.base.version="3.12-1" \
       image.base.description="Docker image for Alpine based docker images by Technosoft2000" \
-      image.base.date="2020-04-12" \
+      image.base.date="2020-10-05" \
       url.base.docker="https://hub.docker.com/r/technosoft2000/alpine-base" \
       url.base.github="https://github.com/Technosoft2000/docker-alpine-base" \
       url.base.support="https://github.com/Technosoft2000/docker-alpine-base"
@@ -29,7 +29,7 @@ ENV \
     CONTAINER_TIMEZONE="UTC" \
     \
     # - PKG_*: the needed applications for installation
-    GOSU_VERSION="1.11" \
+    GOSU_VERSION="1.12" \
     PKG_BASE="bash tzdata git coreutils shadow tree"    
 	
 RUN \

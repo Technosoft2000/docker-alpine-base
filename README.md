@@ -14,15 +14,10 @@ on the original [Alpine Image](https://hub.docker.com/_/alpine/) but with the fo
 
 ## Updates ##
 
-**2020-04-12 - 3.11-2**
+**2020-10-05 - 3.12-1**
 
- * updated to Alpine 3.11.5
- * small refactoring of the Dockerfile, because MAINTAINER is deprecated in favour of LABEL, and therefore LABEL contains now the MAINTAINER information
-
-**2019-12-15 - 3.11-1**
-
- * updated to Alpine 3.11.2
- * fixed empty continuation line
+ * updated to Alpine 3.12.0
+ * updated [gosu](https://github.com/tianon/gosu) to 1.12
 
 For previous changes see at [full changelog](CHANGELOG.md).
 
